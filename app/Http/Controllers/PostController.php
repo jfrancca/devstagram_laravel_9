@@ -37,7 +37,27 @@ class PostController extends Controller
         // Post::create([
         //    'titulo' => $request->titulo,
         //    'descripcion' => $request->descripcion, 
-        //    'imagen' => $request->iamgen
+        //    'imagen' => $request->imagen, 
+        //    'user_id' => auth()->user()->id // crear en la tabla el id del usuario registrado
         // ]);
+
+            // otra forma de insertar datos en la tabla
+        // $post = new Post;
+        // $post->titulo = $request->titulo;
+        // $post->descripcion = $request->descripcion;
+        // $post->imagen = $request->imagen;
+        // $post->user_id = auth()->user()->id;
+        // $post->save();
+
+            // otra forma de insertar, utilizando la relación creada
+        $request->user()->posts()->create([
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion, 
+            'imagen' => $request->imagen, 
+            'user_id' => auth()->user()->id // crear en la tabla el id del usuario registrado
+        ]);
+
+
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
