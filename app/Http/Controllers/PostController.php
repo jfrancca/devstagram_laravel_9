@@ -16,8 +16,11 @@ class PostController extends Controller
     public function index( User $user ) 
     {
         // dd($user->username);
+        $posts = Post::where('user_id', $user->id)->paginate(4);
+
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 
@@ -26,7 +29,7 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store( Request $request)
+    public function store( Request $request )
     {
         $this->validate($request, [
             'titulo' => 'required|max:255',
@@ -57,7 +60,13 @@ class PostController extends Controller
             'user_id' => auth()->user()->id // crear en la tabla el id del usuario registrado
         ]);
 
-
         return redirect()->route('posts.index', auth()->user()->username);
+    }
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post
+        ]);
     }
 }
