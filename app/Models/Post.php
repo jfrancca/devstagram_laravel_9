@@ -17,8 +17,15 @@ class Post extends Model
         'user_id'
     ];
 
+    // One To Many (Inverse)
     public function user()
     {
         return $this->belongsTo(User::class)->select(['name', 'username']);
+    }
+    
+    // One to Many (uno a muchos)
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
     }
 }

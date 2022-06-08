@@ -14,4 +14,11 @@ class Comentario extends Model
         'post_id',
         'comentario'
     ];
+
+    // One To Many (Inverse)
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
