@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    // One to Many (uno a muchos) un usuario puede tener multiples likes
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

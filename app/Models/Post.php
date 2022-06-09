@@ -28,4 +28,16 @@ class Post extends Model
     {
         return $this->hasMany(Comentario::class);
     }
+
+    // One to Many (uno a muchos)
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    // Validar que solo se pueda dar like una vez
+    public function checkLike(User $user)
+    {
+        return $this->likes->contains('user_id', $user->id);
+    }
 }
