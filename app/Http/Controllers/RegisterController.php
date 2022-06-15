@@ -18,14 +18,14 @@ class RegisterController extends Controller
     {
 
         // validar el request
-        // $request->request->add(['username' => Str::slug( $request->username )]);
+        $request->request->add(['username' => Str::slug( $request->username )]);
 
-        // $this->validate($request, [
-        //     'name' => 'required|max:30',
-        //     'username' => 'required|unique:ursers|min:3|max:20',
-        //     'email' => 'required|unique:ursers|email|max:60',
-        //     'password' => 'required|confirmed:6'
-        // ]);
+        $this->validate($request, [
+            'name' => 'required|max:30',
+            'username' => 'required|unique:users|min:3|max:20',
+            'email' => 'required|unique:ursers|email|max:60',
+            'password' => 'required|confirmed:6'
+        ]);
 
             // Inserta datos a la tabla user
         User::create([

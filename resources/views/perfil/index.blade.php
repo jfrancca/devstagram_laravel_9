@@ -7,7 +7,7 @@
 @section('contenido')
     <div class="md:flex md:justify-center">
         <div class="md:w-1/2 bg-white shadow p-6">
-        <form action="POST" action="{{ route('perfil.store') }}" enctype="multipart/form-data" class="mt-10 md:mt-0">
+        <form method="POST" action="{{ route('perfil.store') }}" enctype="multipart/form-data" class="mt-10 md:mt-0">
             @csrf
 
             <div class="mb-5">
@@ -37,8 +37,8 @@
                     type="file"
                     placeholder="Nombre de Usuario"
                     class="border p-3 w-full rounded-lg"
-                    accept=".jpg .jpeg .png"
-                />
+                    accept=".jpg, .jpeg, .png"
+                >
 
                 <input
                     type="submit"
