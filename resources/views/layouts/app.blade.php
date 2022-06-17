@@ -7,6 +7,8 @@
         <link href=" {{ asset('css/app.css') }} " rel="stylesheet">
         <script src=" {{ asset('js/app.js') }} " defer></script>
         <title>DevStagram - @yield('titulo')</title>
+
+        @livewireStyles
     </head>
     <body class="bg-gray-100">
         <header class="p-5 border-d bg-white shadow">
@@ -52,6 +54,6 @@
             DevStagram - Todos los derechos reservados 
             {{ now()->year }}
         </footer>
-
+        @livewireScripts
     </body>
 </html>
