@@ -31,6 +31,7 @@
                             <button type="submit" class="font-bold uppercase text-gray-600 text-sm">Cerrar Sesión</button>
                         </form>
                     </nav>
+                    <input type="checkbox">
                 @endauth
 
                 {{-- No esta autenticado --}}
